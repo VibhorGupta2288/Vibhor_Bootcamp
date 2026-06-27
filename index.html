@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A real-time dashboard visualizing dust pollution from heavy vehicles in Raipur-Bhilai and proposing an automated IoT tarping solution.">
+    <title>Raipur-Bhilai Dust Mitigation Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Dynamic Background Effects -->
+    <div class="background-mesh"></div>
+    <div id="cursor-glow"></div>
+    <div class="ambient-light light-1"></div>
+    <div class="ambient-light light-2"></div>
+    
+    <div class="app-container">
+        <!-- Header -->
+        <header class="glass-panel main-header animate-on-load staggered-1">
+            <div class="header-content">
+                <div class="logo-box">
+                    <i data-lucide="satellite" class="header-icon"></i>
+                </div>
+                <div class="header-text">
+                    <h1 class="gradient-text">Eco-Transit Command Center</h1>
+                    <p>Raipur-Bhilai Industrial Corridor | Heavy Vehicle Dust Mitigation</p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <div class="system-status" id="system-status-indicator">
+                    <span class="pulse-dot warning"></span>
+                    <span class="status-text warning-text">System Inactive - High Emissions</span>
+                </div>
+                <button id="simulateBtn" class="cyber-button">
+                    <span class="cyber-button-glitch"></span>
+                    <i data-lucide="power"></i> ENGAGE TARPING SYSTEM
+                </button>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- SECTION 1: THE PAIN POINT -->
+            <section class="section-container">
+                <div class="section-header animate-on-load staggered-2">
+                    <h2 class="section-title text-danger"><i data-lucide="alert-triangle"></i> Crisis Overview</h2>
+                    <div class="line-decorator"></div>
+                </div>
+                
+                <div class="cards-grid">
+                    <!-- AQI Card -->
+                    <div class="glass-panel metric-card alert-state animate-on-load staggered-3">
+                        <div class="card-header">
+                            <h3>Real-Time AQI</h3>
+                            <i data-lucide="wind"></i>
+                        </div>
+                        <div class="metric-value-container">
+                            <span class="metric-value text-danger" id="aqi-display">285</span>
+                            <span class="metric-unit" id="aqi-unit">Poor</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill aqi-fill-danger" id="aqi-bar"></div>
+                        </div>
+                        <p class="metric-desc">Critical impact from heavy vehicular movement.</p>
+                    </div>
+
+                    <!-- Volume Card -->
+                    <div class="glass-panel metric-card animate-on-load staggered-4">
+                        <div class="card-header">
+                            <h3>Heavy Truck Volume</h3>
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <div class="metric-value-container">
+                            <span class="metric-value highlight-number">15K+</span>
+                            <span class="metric-unit">/ Day</span>
+                        </div>
+                        <p class="metric-desc">Coal, iron ore, and raw mineral transport.</p>
+                    </div>
+
+                    <!-- Fugitive Dust Card -->
+                    <div class="glass-panel metric-card animate-on-load staggered-5">
+                        <div class="card-header">
+                            <h3>Fugitive Dust Volume</h3>
+                            <i data-lucide="cloud-off"></i>
+                        </div>
+                        <div class="metric-value-container">
+                            <span class="metric-value text-warning" id="dust-display">37.5</span>
+                            <span class="metric-unit">Tonnes/Day</span>
+                        </div>
+                        <p class="metric-desc">Escaping due to wind shear on open beds.</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel chart-container animate-on-load staggered-6">
+                    <div class="chart-header">
+                        <h3>PM2.5 Source Apportionment</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="sourceChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: THE SOLUTION -->
+            <section class="section-container">
+                <div class="section-header animate-on-load staggered-2">
+                    <h2 class="section-title text-cyan"><i data-lucide="shield-check"></i> Mitigation Architecture</h2>
+                    <div class="line-decorator cyan-decorator"></div>
+                </div>
+                
+                <div class="solution-grid">
+                    <div class="glass-panel feature-card animate-on-load staggered-3 interactive-card">
+                        <div class="feature-icon-wrapper cyan-glow">
+                            <i data-lucide="layers"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Advanced Sealing Material</h3>
+                            <p class="tech-spec">PVC-Coated High-Tenacity Tarpaulin</p>
+                            <p class="feature-desc">Integrated with Polyurethane (PU) sealing lips around the rear tailgate to completely eliminate micro-particle escape. Resistant to severe abrasion.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel feature-card animate-on-load staggered-4 interactive-card">
+                        <div class="feature-icon-wrapper cyan-glow">
+                            <i data-lucide="cpu"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>IoT Automated Tarping</h3>
+                            <p class="tech-spec">Motorized Retractable System</p>
+                            <p class="feature-desc">Smart deployment ensures 100% sealing before movement. Optical dust sensors at the rear trigger alerts if the seal is ever compromised.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel feature-card animate-on-load staggered-5 interactive-card">
+                        <div class="feature-icon-wrapper cyan-glow">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Electrostatic Suppression</h3>
+                            <p class="tech-spec">Tailgate Ionization Bars</p>
+                            <p class="feature-desc">Ionizes any escaping fine particles at the exhaust point, causing them to clump and fall immediately rather than remaining airborne.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel chart-container animate-on-load staggered-6 mt-4 relative-container">
+                    <div class="chart-header">
+                        <h3>Mitigation Efficiency Impact</h3>
+                    </div>
+                    <div class="chart-wrapper bar-chart-wrapper">
+                        <canvas id="efficiencyChart"></canvas>
+                    </div>
+                    <!-- Overlay for active state -->
+                    <div id="chart-overlay-success" class="chart-success-overlay">
+                        <i data-lucide="check-circle" class="success-icon-large"></i>
+                        <span>Emissions Neutralized</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
